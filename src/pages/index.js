@@ -9,7 +9,7 @@ import SEO from "../components/seo"
 class IndexPage extends React.Component {
   componentDidMount() {
     axios
-      .post("https://app.sandbox.midtrans.com/snap/v1/transactions", {
+      .post("https://app.midtrans.com/snap/v1/transactions", {
         headers: {
           Accept: "application / json",
           "Content-Type": "application/ json",
@@ -17,7 +17,7 @@ class IndexPage extends React.Component {
           "Access-Control-Allow-Origin": "*",
         },
         auth: {
-          username: "SB-Mid-server-bObe0On1pJGQ1o6-ONWafNIj",
+          username: "Mid-server-iDIcnmkvju86eOBd21YdijPu",
           password: "",
         },
         data: {
