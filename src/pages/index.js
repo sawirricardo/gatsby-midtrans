@@ -8,24 +8,25 @@ import SEO from "../components/seo"
 
 class IndexPage extends React.Component {
   componentDidMount() {
-    axios({
-      url: "https://app.sandbox.midtrans.com/snap/v1/transactions",
-      headers: {
-        Accept: "application / json",
-        "Content-Type": "application/ json",
-      },
-      auth: {
-        username: "SB-Mid-server-bObe0On1pJGQ1o6-ONWafNIj",
-        password: "",
-      },
-      method: "post",
-      data: {
-        transaction_details: {
-          order_id: "ORDER-101",
-          gross_amount: 10000,
+    axios
+      .post("https://app.sandbox.midtrans.com/snap/v1/transactions", {
+        headers: {
+          Accept: "application / json",
+          "Content-Type": "application/ json",
+          crossorigin: true,
+          "Access-Control-Allow-Origin": "*",
         },
-      },
-    })
+        auth: {
+          username: "SB-Mid-server-bObe0On1pJGQ1o6-ONWafNIj",
+          password: "",
+        },
+        data: {
+          transaction_details: {
+            order_id: "ORDER-101",
+            gross_amount: 10000,
+          },
+        },
+      })
       .then(response => {
         console.log(response)
       })
