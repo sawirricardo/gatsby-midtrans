@@ -7,28 +7,22 @@ import Image from "../components/image"
 import SEO from "../components/seo"
 
 class IndexPage extends React.Component {
-  componentDidMount() {
-    axios
-      .post("https://app.midtrans.com/snap/v1/transactions", {
-        headers: {
-          Accept: "application / json",
-          "Content-Type": "application/ json",
-          crossorigin: true,
-          "Access-Control-Allow-Origin": "*",
-        },
-        auth: {
-          username: "Mid-server-iDIcnmkvju86eOBd21YdijPu",
-          password: "",
-        },
-        data: {
-          transaction_details: {
-            order_id: "ORDER-101",
-            gross_amount: 10000,
-          },
-        },
-      })
-      .then(response => {
-        console.log(response)
+  componentDidMount() {}
+
+  handleMidtrans() {
+    axios("http://localhost:3000/checkout", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      data: {
+        productName: "hello World Cap",
+        grossAmount: 200000,
+      },
+    })
+      .then(res => {
+        console.log(res)
+        window.open(res.data, "_blank")
       })
       .catch(error => {
         console.log(error)
@@ -45,6 +39,7 @@ class IndexPage extends React.Component {
         <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
           <Image />
         </div>
+        <button onClick={this.handleMidtrans}>Midtrans</button>
         <Link to="/page-2/">Go to page 2</Link>
       </Layout>
     )
